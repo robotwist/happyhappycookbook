@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.name %>'s Profile</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1><%= user.name %>'s Profile</h1>
+    <p>Email: <%= user.email %></p> <!-- Assuming the user has an email field -->
+    
+    <h2>Pantry Items</h2>
+    <% if (pantryItems.length > 0) { %>
+        <ul>
+            <% pantryItems.forEach(item => { %>
+                <li><%= item.name %> - <%= item.quantity %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No items in this pantry.</p>
+    <% } %>
+    
+    <a href="/community">Back to Community List</a>
+</body>
+</html>

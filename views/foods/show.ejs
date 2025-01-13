@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username %>'s Pantry</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <!-- main content -->
+    <div class="container bottomMargin" >
+        <div class="card">
+            <div class="card-content">
+                <p><strong>Name:</strong><%= foodItem.name %></p>
+                <p><strong>Description:</strong><%= foodItem.description %></p>
+            </div>
+            <div class="card-action">
+                <a href="/users/<%= user._id %>/foods/<%= foodItem._id %>/edit" class="btn waves-effect waves-light teal">Edit</a>
+                <form action="/users/<%= user._id %>/foods/<%= foodItem._id%>?_method=DELETE" method="POST">
+                <button class="btn red waves-effect waves-light">Delete</button>
+                </form>
+            </div>
+        </div>
+     </div>
+</body>
+</html>

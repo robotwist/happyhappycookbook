@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Pantry</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Welcome to my Pantry</h1>
+    <a href="/users/<%= id%>/foods">View my Pantry</a>
+    ->
+    <a href="/users/<%= id %>/foods/new">Create New Food</a>
+    <h1 class ="center-align">List of Pantries</h1>
+   
+    <div class="container">
+      <ul class="collection">
+        <% pantry.forEach(food => { %>
+          <li class="collection-item">
+            <a href="/users/<%= user._id %>/foods/<%= food._id %>"> <%= food.name %></a>
+          </li>
+          <% })%>
+      </ul>
+    </div>
+  
+
+  
+
+    
+
+    
+  </body>
+</html>
