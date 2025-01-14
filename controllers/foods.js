@@ -16,8 +16,6 @@ router.get('/', async  (req, res) => {
    
 });
 
-
-
 // new
 router.get('/new', async (req, res) => {
     try {
@@ -33,8 +31,7 @@ router.get('/new', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const userId = req.session.user._id
-
-        // Save the new food item to the database
+        // Save new food item to database
         const user = await User.findById(userId)
 
         user.pantry.push(req.body)
@@ -104,39 +101,15 @@ foodItem.name = name
 foodItem.description = description
 await user.save()
         // Redirect back to the pantry index view
-    //  res.redirect(`users/${userId}/foods`)
-    res.redirect('/');
-    } catch (err) {
+    res.redirect(`/users/${userId}/foods`);
+   
+    // res.redirect('/');
+   
+} catch (err) {
         console.error(err);
-        res.redirect('/');
-    
+        res.redirect('/');    
     }
 });
-
-// // Create food item: POST /users/:userId/foods
-// router.post('/', async (req, res) => {
-//     try {
-//         const { userId } = req.params;
-//         const { name, description } = req.body;
-
-//         // Save the new food item to the database
-//         const Food = require('../models/food'); // Ensure your Food model is imported
-//         const newFood = new Food({
-//             name,
-//             description,
-//             user: userId
-//         });
-
-//         await newFood.save();
-
-//         // Redirect to the foods list
-//         res.redirect(`/users/${userId}/foods`);
-//     } catch (error) {
-//         console.error('Error creating new food item:', error);
-//         res.status(500).send('Error creating food item');
-//     }
-// });
-
 
 
 // Edit Route: GET /users/:userId/foods/:itemId/edit
